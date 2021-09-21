@@ -1,0 +1,37 @@
+.site {
+  min-height: 100vh;
+  margin-bottom: -40px;
+}
+
+footer, .minSite{
+  height : 40px;
+  margin-top: 40px;
+}
+
+
+h4 {
+  display: inline;
+}
+
+.product-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.product-price div {
+  font-size: 1.5rem;
+}
+
+.product-qty {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5px;
+}
+
+
+.product-qty div {
+  font-size: 1rem;
+}

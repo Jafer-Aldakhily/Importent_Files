@@ -1,0 +1,182 @@
+state = {
+        cars : data.cars,
+        // 1 : ajout du state brand pour filtrage
+        brand : ""
+}
+
+
+filterVehicle = (event) => {
+        // 1 : étape num 1. console.log("Vous sélectionné "+event.target.value)
+
+    
+        if(event.target.value === ""){
+            this.setState({ brand: event.target.value, cars: data.cars})
+        } else {
+            this.setState({ 
+              brand: event.target.value,
+              cars: data.cars.filter(
+                  (car) => car.brand.indexOf(event.target.value) >= 0
+              ),
+            });
+        }
+}
+
+
+{/* commencement du filtre */}
+                                <Filtre 
+                                    count = {this.state.cars.length} 
+                                    // deux props pour filtre
+                                    filterVehicle = {this.filterVehicle}
+                                    brand = {this.state.brand}
+                                    // 
+                                />
+                             {/* fin du filtre */}
+
+
+{/*  */}
+                <Col md={4} sm={4} xs={4}>
+                    <select value = {props.brand} onChange={props.filterVehicle} className="form-control">
+                        <option value = "">Tout</option>
+                        <option value = "Mercedes">Mercedes</option>
+                        <option value = "Toyota">Toyota</option>
+                        <option value = "Nissan">Nissan</option>
+                    </select>
+                </Col>
+                {/*  */}
+
+
+///////////////////////////////////    sorting by price
+
+state = {
+        cars : data.cars,
+        // 1 : ajout du state sort pour filtrage par prix
+        sort : ""
+}
+
+
+sortVehicle = (event) => {
+        // impl
+        const sort = event.target.value;
+        console.log(event.target.value);
+
+        this.setState({
+            sort:sort,
+            cars : this.state.cars.slice().sort((a,b) =>(
+                sort === "Moins chère"
+                    ? a.price > b.price
+                        ? 1 
+                        :-1 
+                    : sort === "Chère"
+                    ? a.price < b.price
+                      ? 1 
+                      :-1
+                    : a._id > b._id
+                    ? 1
+                    :-1
+            ))
+        })
+    }
+
+
+{/* commencement du filtre */}
+                                <Filtre 
+                                    count = {this.state.cars.length}
+                                    // deux props pour filtrage par prix
+                                    sortVehicle = {this.sortVehicle}
+                                    sort = {this.state.sort}
+                                />
+                             {/* fin du filtre */}
+
+
+<Col md={4} sm={4} xs={4}>
+                    <select value={props.sort} onChange={props.sortVehicle} className="form-control">
+                        <option>Tout</option>        
+                        <option>Moins chère</option>
+                        <option>Chère</option>
+                    </select>
+                </Col>
+
+////////////////////////////////////// Add to cart
+
+state = {
+            cars : data.cars,
+            // 1 : ajout du state cartItem
+            cartItems: []
+        };
+
+
+addToCart = (vehicule) =>{
+        // console.log("Vous avez séléctionné "+vehicule.brand)
+        console.log(this.state.cartItems)
+
+        const cartItems = this.state.cartItems.slice();
+        let alreadyInCart = false;
+        cartItems.forEach((item) => {
+            if(item._id === vehicule._id){
+                item.count++;
+                alreadyInCart = true;
+            }
+        });
+        if(!alreadyInCart){
+            cartItems.push({...vehicule, count: 1});
+        }
+        this.setState({ cartItems });
+    }
+
+<Vehicules cars = {this.state.cars} addToCart={this.addToCart} />
+
+props.cars.map(car => {
+                        return(
+                            <Vehicule key={car._id} price = {car.price} image = {car.image} addToCart={() => props.addToCart(car)} />
+                        )                        
+                    })  
+
+
+<Col lg={4} md={6} sm={6} xs={6} className={styles.margin}>
+            <Image src={props.image} thumbnail />
+
+            <div className="product-price">
+                <div>$ {props.price}</div>
+                <Bouton clic ={props.addToCart} typebtn = "btn-success">+ panier</Bouton>
+            </div>
+        </Col>
+
+<button onClick={props.clic} type ={props.type} className={`btn ${props.typebtn}`}>{props.children}</button>
+
+
+//////////////////////////////////////// Remove from cart
+
+
+removeFromCart = (vehicule) => {
+        const cartItems = this.state.cartItems.slice();
+
+        const index = cartItems.findIndex(index => {
+            return index._id === vehicule._id
+        })
+
+        cartItems.splice(index, 1)
+
+        this.setState({
+            cartItems: cartItems
+        });
+    };
+
+
+
+<Panier key={cartelement._id} cartelement={cartelement} removeFromCart={this.removeFromCart} 
+price = {cartelement.price} qty = {cartelement.count} image = {cartelement.image}/>
+
+<Col md={{span: 6, offset :3 }} sm={3} xs={3} className={styles.marginbottom}>
+                <Image src={props.image} thumbnail />
+                <div className="product-qty">
+                    <div>${props.price} X {props.qty}</div>
+                    {/* <button className="">  </button> */}
+                    
+                    <Bouton clic ={() => props.removeFromCart(props.cartelement)} typebtn="btn-danger">X</Bouton>
+                </div>
+            </Col>
+
+
+******************************* installation  de react reveal
+npm install react-reveal
+npm install react-modal

@@ -1,0 +1,200 @@
+// Création du composant Accueil
+
+import React from 'react';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Image from 'react-bootstrap/Image';
+import styles from './accueil.module.css'
+
+
+
+	    <Container>
+                <Row>
+
+                    {/* commencement du filtre et véhicules */}
+
+                    <Col md={8}>
+
+                        {/* commencement du filtre */}
+
+                        <Row className={styles.fond}>
+                            <Col md={4} sm={4} xs={4}>
+                                <div className={styles.text}>
+                                    Véhicules : 100
+                                </div>
+                            </Col>
+                            <Col md={4} sm={4} xs={4}>
+                                <select className="form-control">
+                                    <option>Tout</option>
+                                    <option>Mercedes</option>
+                                    <option>Toyota</option>
+                                    <option>Mazda</option>
+                                </select>
+                            </Col>
+                            <Col md={4} sm={4} xs={4}>
+                                <select className="form-control">
+                                    <option>Tout</option>        
+                                    <option>Moins chère</option>
+                                    <option>Chère</option>
+                                    <option>Très Chère</option>
+                                </select>
+                            </Col>
+                        </Row>
+                        
+                        {/* fin du filtre */}
+
+                        <hr/>
+
+                        {/* commencement de véhicules */}
+
+                        <Row>
+                            <Col lg={4} md={6} sm={6} xs={6} className={styles.margin}>
+                                <Image src={image1} thumbnail />
+                                
+                                <div className="product-price">
+                                    <div>$ 100</div>
+                                    <button className="btn btn-success">+ panier</button>
+                                </div>
+                            </Col>
+                            <Col lg={4} md={6} sm={6} xs={6} className={styles.margin}>
+                                <Image src={image2} thumbnail />
+
+                                <div className="product-price">
+                                    <div>$ 100</div>
+                                    <button className="btn btn-success">+ panier</button>
+                                </div>
+                            </Col>
+                            <Col lg={4} md={6} sm={6} xs={6} className={styles.margin}>
+                                <Image src={image3} thumbnail />
+                                <div className="product-price">
+                                    <div>$ 100</div>
+                                    <button className="btn btn-success">+ panier</button>
+                                </div>
+                            </Col>
+                            <Col lg={4} md={6} sm={6} xs={6} className={styles.margin}>
+                                <Image src={image4} thumbnail />
+                                <div className="product-price">
+                                    <div>$ 100</div>
+                                    <button className="btn btn-success">+ panier</button>
+                                </div>
+                            </Col>
+                            
+                            <Col lg={4} md={6} sm={6} xs={6} className={styles.margin}>
+                                <Image src={image5} thumbnail />
+                                <div className="product-price">
+                                    <div>$ 100</div>
+                                    <button className="btn btn-success">+ panier</button>
+                                </div>
+                            </Col>
+                            <Col lg={4} md={6} sm={6} xs={6} className={styles.margin}>
+                                <Image src={image6} thumbnail />
+                                <div className="product-price">
+                                    <div>$ 100</div>
+                                    <button className="btn btn-success">+ panier</button>
+                                </div>
+                            </Col>
+                            <Col lg={4} md={6} sm={6} xs={6} className={styles.margin}>
+                                <Image src={image8} thumbnail />
+                                <div className="product-price">
+                                    <div>$ 100</div>
+                                    <button className="btn btn-success">+ panier</button>
+                                </div>
+                            </Col>
+                            <Col lg={4} md={6} sm={6} xs={6} className={styles.margin}>
+                                <Image src={image9} thumbnail />
+                                <div className="product-price">
+                                    <div>$ 100000</div>
+                                    <button className="btn btn-success"> + panier</button>
+                                </div>
+                            </Col>
+                        </Row>
+
+                        {/* fin du véhicules */}
+
+                    </Col>
+
+                    {/* fin du filtre et véhicules */}
+
+                    {/* commencement du panier */}
+
+                    <Col md={4}>
+
+                        {/* commencement de l'entete du panier */}
+
+                        <Row>
+                            <Col md={{span :8, offset:2}}>
+                                <h6 className={styles.margincart}>You have 2 product (s) in cart</h6>
+                            </Col>
+                        </Row>
+
+                        {/* fin de l'entete du panier */}
+
+                        <hr/>
+
+                        {/* commencement d'affichage des éléments du panier */}
+
+                        <Row>
+                            <Col md={{span: 6, offset :3 }} sm={3} xs={3} className={styles.marginbottom}>
+                                <Image src={image9} thumbnail />
+                                <div className="product-qty">
+                                    <div>$100 X 1</div>
+                                    <button className="btn btn-danger"> X </button>
+                                </div>
+                            </Col>
+
+                            <Col md={{span: 6, offset :3 }} sm={3} xs={3} className={styles.marginbottom}>
+                                <Image src={image1} thumbnail />
+                                <div className="product-qty">
+                                    <div>$100 X 1</div>
+                                    <button className="btn btn-danger"> X </button>
+                                </div>
+                            </Col>
+                        </Row>
+                        <hr/>
+
+                        <Row>
+                            <Col md={12} sm={12} xs={12}>
+                                <div className="product-price">
+                                    <div>Total : </div>
+                                </div>
+                            </Col>
+                            <Col md={12} sm={12} xs={12}>
+                                <div className="product-price">
+                                    <button className="btn btn-success w-100"> Commander </button>
+                                </div>
+                            </Col>
+                        </Row>
+
+                        {/* fin d'affichage des éléments du panier */}
+
+                        <hr/>
+
+                        {/* commencement de formulaire du client */}
+
+                        <Row>
+                            <Col md={12} sm={12} xs={12}>
+                                <form>
+                                    <div className="form-group">
+                                        <label>Noms</label>
+                                        <input className="form-control" />
+                                    </div>
+                                    <div className="form-group">
+                                        <label>Email</label>
+                                        <input className="form-control" name="email" />
+                                    </div>
+                                    <div className="form-group">
+                                        <button className="btn btn-info" type="submit">Valider</button>
+                                    </div>
+                                </form>
+                            </Col>
+                        </Row>
+
+                        {/* fin de formulaire du client */}
+
+                    </Col>
+
+                    {/* fin du panier */}
+
+                </Row>
+            </Container> 
